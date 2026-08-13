@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue: #8fc8dc;
+  --deep-blue: #4f8194;
+  --ink: #3f4c50;
+  --paper: #fffdf7;
+  --bg: #dceff5;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.9), transparent 28%),
+    radial-gradient(circle at 80% 75%, rgba(166,215,228,.35), transparent 30%),
+    linear-gradient(135deg, #dff2f7, #cfe8ef);
+  font-family: "Playfair Display", serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background-image:
+    radial-gradient(rgba(70, 100, 110, .35) .6px, transparent .6px);
+  background-size: 5px 5px;
+  mix-blend-mode: multiply;
+}
+
+.scene {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 30px 18px;
+}
+
+.intro {
+  text-align: center;
+  transition: .8s ease;
+  animation: rise .9s ease both;
+}
+
+.intro.hide {
+  opacity: 0;
+  transform: translateY(-30px) scale(.96);
+  pointer-events: none;
+}
+
+.small {
+  font-size: .78rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #668894;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  color: #466f7c;
+}
+
+.sub {
+  margin-top: 12px;
+  font-size: .95rem;
+  color: #68858d;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#openBtn {
+  margin-top: 32px;
+  padding: 13px 23px;
+  border-radius: 999px;
+  color: white;
+  background: #77b8cc;
+  box-shadow: 0 10px 25px rgba(78, 130, 145, .22);
+  transition: .25s ease;
+}
+
+#openBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(78, 130, 145, .28);
+}
+
+#openBtn span {
+  margin-left: 6px;
+}
+
+.letter-wrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  padding: 70px 18px 50px ;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(35px) scale(.97);
+  transition: .8s ease;
+  overflow-y: auto;
+}
+
+.letter-wrap.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.paper {
+  position: relative;
+  width: min(720px, 94vw);
+  min-height: min(900px, 88vh);
+  padding: 48px clamp(25px, 7vw, 75px) 65px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255,253,247,.93), rgba(255,253,247,.93)),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 30px,
+      rgba(125, 169, 181, .09) 31px
+    );
+  border: 1px solid rgba(120, 140, 140, .15);
+  box-shadow:
+    0 25px 70px rgba(55, 94, 105, .22),
+    0 3px 8px rgba(55, 94, 105, .12);
+  transform: rotate(-.35deg);
+}
+
+.paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .25;
+  background-image: radial-gradient(rgba(90, 90, 80, .28) .45px, transparent .45px);
+  background-size: 4px 4px;
+}
+
+.paper-holes {
+  position: absolute;
+  left: 13px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(115, 177, 191, .18);
+}
+
+.letter-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 18px;
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgba(100, 135, 145, .2);
+  color: #76919a;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.letter {
+  position: relative;
+  font-family: "Caveat", cursive;
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  line-height: 1.65;
+  letter-spacing: .01em;
+}
+
+.letter p {
+  margin-bottom: 24px;
+}
+
+.greeting {
+  font-size: 2.15rem;
+  margin-bottom: 25px !important;
+}
+
+.closing {
+  margin-top: 35px;
+}
+
+.signature {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.1;
+}
+
+.signature span {
+  font-size: 1.35rem;
+}
+
+.signature strong {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #527c88;
+}
+
+.doodle {
+  position: absolute;
+  color: #8cc6d5;
+  font-family: "Caveat", cursive;
+  opacity: .7;
+}
+
+.doodle-one {
+  right: 30px;
+  top: 105px;
+  font-size: 45px;
+  transform: rotate(12deg);
+}
+
+.doodle-two {
+  left: 35px;
+  bottom: 35px;
+  font-size: 32px;
+  transform: rotate(-10deg);
+}
+
+.tape {
+  position: absolute;
+  width: 125px;
+  height: 32px;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  background: rgba(166, 211, 220, .45);
+  box-shadow: 0 1px 4px rgba(70, 100, 110, .08);
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #557d88;
+  background: rgba(255,255,255,.65);
+  box-shadow: 0 5px 20px rgba(70, 100, 110, .12);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s ease;
+  z-index: 5;
+}
+
+.back-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .scene {
+    padding: 20px 12px;
+  }
+
+  .paper {
+    min-height: 900;
+    padding: 43px 28px 55px 34px;
+  }
+
+  .letter-header {
+    font-size: .62rem;
+    margin-bottom: 28px;
+  }
+
+  .letter {
+    font-size: 1.38rem;
+    line-height: 1.58;
+  }
+
+  .greeting {
+    font-size: 1.9rem;
+  }
+
+  .doodle-one {
+    right: 18px;
+    top: 90px;
+  }
+}
